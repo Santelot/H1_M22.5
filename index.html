@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M22.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparación para aplicar estrategias que permitan mantener el contexto.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a poner en práctica las estrategias para mantener el contexto en LLMs en proyectos largos y colaborativos. Exploraremos cómo usar resúmenes iterativos para guiar a la IA en varias sesiones. ¡Prepárense para un reto de memoria y organización!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo se sienten hoy. Si están listos para desafiar la memoria de la IA, levanten un brazo y hagan un puño con él. Si necesitan un poco más de motivación, toquen sus hombros con las manos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por la oportunidad de aprender y trabajar juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos: 1. Aplicar estrategias para guiar a la IA a través de varias sesiones. 2. Usar resúmenes iterativos para mantener el contexto de un proyecto largo."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🤸‍♂️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Pausa activa para relajar la mente y prepararse para el trabajo.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a activar nuestra energía con una actividad rápida llamada 'Manos Mágicas'. Froten sus manos rápidamente hasta que se sientan calientes y luego colóquenlas suavemente sobre sus ojos cerrados. Esto nos ayudará a relajar la vista y prepararnos para seguir aprendiendo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, esta actividad nos ayuda a relajar la tensión acumulada en los ojos y mejorar nuestra concentración. Estas pequeñas pausas físicas son esenciales para mantener nuestra energía y enfoque durante actividades mentales intensas. ¡Muy bien hecho!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">👥 Actividad 3: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos para trabajar de manera colaborativa.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para este reto trabajaremos en equipos de 2 personas. Busquen a un compañero con quien no hayan trabajado antes. ¡Tienen 1 minuto para organizarse!"</td>
+           </tr>
+            <tr>
+                 <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos listos, necesito que un representante de cada equipo pase a recoger las Magic Tablets. Tienen 1 minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 4: Challenge ⏰ Tiempo: 39 minutos</div>
+        <div class="subtitle">Aplicación práctica de resúmenes iterativos y prompts para mejorar la memoria de la IA.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Introducción al Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a enfrentar un reto que pondrá a prueba su capacidad para superar las limitaciones de memoria de los LLMs. Vamos a trabajar en un proyecto largo donde analizaremos diferentes regiones de México para generar un análisis completo y coherente.  Para ello, usaremos resúmenes iterativos para mantener el contexto en múltiples sesiones. ¡Prepárense para un reto que requiere organización y atención al detalle!"</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 14 "Explicación del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Su tarea será generar un reporte de investigación sobre los sitios de patrimonio cultural en diferentes regiones de México. Trabajaremos como si fuera un proyecto de varias sesiones, y deberán usar resúmenes en cada sesión para guiar a la IA y que ésta recuerde lo que hemos visto en sesiones anteriores. Este reto les enseñará cómo manejar grandes proyectos con la ayuda de la IA sin perder continuidad."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Etapa 1: Planificación del Proyecto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Primero, definan la estructura de su proyecto. Identifiquen las regiones que van a analizar, por ejemplo: la península de Yucatán, Oaxaca y el norte de México. Usen la hoja de trabajo para planear cuántas sesiones necesitarán para cubrir cada región y definir los temas que abordarán en cada sesión. Tengan presente que el objetivo es crear un reporte final que muestre las diferencias y similitudes entre los sitios de patrimonio cultural en México."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (5 minutos):</strong> Proyectar Diapositiva 16 "Cronómetro - 5 Minutos".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 17 "Etapa 2: Prompt Inicial (sin Resumen)".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, empiecen con la primera región: la península de Yucatán. Pídanle a la IA que escriba información sobre los sitios de patrimonio cultural maya y su contexto histórico. No usen ningún prompt especial para generar un resumen. Observen si la respuesta es muy extensa, si tiene dificultad para recordar datos importantes y si falta un resumen al final del texto. Este paso les ayudará a identificar la limitación de memoria de la IA."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 6 (3 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro - 3 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Etapa 3: Prompt con Resumen".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, van a refinar el prompt. Definan un rol: pidan a la IA que actúe como un archivista de proyectos. Luego, pidan a la IA que genere un resumen de 3 a 5 puntos después de cada respuesta, donde capture los detalles más relevantes. Pídanle que se asegure de que ese resumen se usará en la próxima sesión. Pueden usar los ejemplos del material proporcionado para generar su prompt. Recuerden que la clave está en pedirle a la IA que genere resúmenes que se puedan utilizar en la siguiente conversación."</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 8 (3 minutos):</strong> Proyectar Diapositiva 20 "Cronómetro - 3 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Etapa 4: Nueva Interacción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Introduzcan el nuevo prompt y analicen la respuesta de la IA. ¿Ahora genera un resumen al final? ¿Los puntos capturan lo más importante de su análisis? Escriban este resumen en la hoja de trabajo. Este paso les mostrará cómo guiar a la IA para que genere resúmenes útiles."</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 10 (5 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro - 5 Minutos".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+           </tr>
+           <tr>
+               <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Etapa 5: Segunda Sesión (Oaxaca)".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para la segunda sesión, vamos a cambiar de región, enfocándonos en el patrimonio colonial de Oaxaca. Empiecen el prompt con el resumen de la sesión anterior sobre la península de Yucatán. De esta manera, le estarán proporcionando el contexto a la IA. Después, pidan a la IA que analice la información sobre Oaxaca y que genere otro resumen. Recuerden que deben guiar a la IA para que conecte la información de la sesión anterior con la nueva."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (5 minutos):</strong> Proyectar Diapositiva 24 "Cronómetro - 5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Etapa 6: Resúmenes Iterativos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, repitan el proceso para la tercera región: las misiones del norte de México.  Cada vez que inicien una nueva sesión, recuerden proporcionar todos los resúmenes anteriores. De esta forma la IA podrá mantener el contexto del proyecto. Asegúrense de que la IA continúe generando los resúmenes al final de cada sesión. Anoten los resúmenes en la hoja de trabajo. Recuerden que lo más importante es que la IA no olvide los puntos clave que han visto hasta el momento."</td>
+           </tr>
+           <tr>
+               <td><strong>PASO 14 (10 minutos):</strong> Proyectar Diapositiva 26 "Cronómetro - 10 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Etapa 7: Reporte Final".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Con todos los resúmenes generados, pidan a la IA que genere el reporte final. Proporcionen a la IA los resúmenes de todas las sesiones y pidan que realice un análisis comparativo resaltando las similitudes y diferencias entre las regiones. Asegúrense de que el reporte tenga una estructura clara y que sea un producto coherente de todo el trabajo realizado."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (3 minutos):</strong> Proyectar Diapositiva 28 "Cronómetro - 3 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 17 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Presentaciones".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Seleccionaré dos parejas al azar para que presenten sus reportes finales y compartan su experiencia al usar resúmenes iterativos. Vamos a escuchar al primer equipo."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 18 (2 minutos):</strong> Proyectar Diapositiva 30 "Presentaciones".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Adelante, equipo, compártanos su trabajo."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 19 (0.5 minutos):</strong> Proyectar Diapositiva 31 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos logrado nuestros dos objetivos de hoy: 1. Aplicamos estrategias para guiar a la IA a través de varias sesiones. 2. Usamos resúmenes iterativos para mantener el contexto en un proyecto largo. ¡Han hecho un gran trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 20 (0.5 minutos):</strong> Proyectar Diapositiva 32 "You've Got Mon-e".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Se llevan Mon-e por su dedicación y habilidad para superar los límites de la memoria de la IA. ¡Muy bien hecho!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_the_dojo')">
+        <div class="title">🙏 Actividad 5: Honor The Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre y organización del espacio de trabajo.</div>
+    </div>
+    <div id="honor_the_dojo" class="content">
+         <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 33 "Honor The Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de devolver las Magic Tablets y dejar todo en orden. Gracias por su trabajo hoy, hicieron un gran esfuerzo. Un espacio limpio refleja el respeto por lo que hacemos y por quienes compartimos este espacio. ¡Nos vemos en la próxima misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
